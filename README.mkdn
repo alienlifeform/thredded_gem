@@ -29,12 +29,17 @@ Mount the thredded engine in your routes file:
 mount Thredded::Engine => '/forum'
 ```
 
+Add rails-4 friendly "friendly_id" to your gem file
+```
+gem 'friendly_id', github: 'norman/friendly_id'
+```
+
 ## Get Your App Ready
 
 There are a few things you need in your app to get things looking just right.
 
 1. Add a to_s method to your user model. The following example assumes a column in my user model called `name`:
-
+* name also seems to be required via (messageboards/index latest_user_for(messageboard) ->  messageboard.topics.first.last_user.name)
 ```ruby
 class User < ActiveRecord::Base
   def to_s
@@ -44,3 +49,7 @@ end
 ```
 
 For more information see [the full-fledged rails app](https://github.com/jayroh/thredded_app)
+
+2. Navigate to your mount location /new to create a new messageboard
+* need to explain options here (logged in vs. members)
+* messageboard should be letters,numbers,dash and underscore only and 1-16 characters
